@@ -1,0 +1,22 @@
+# strings to check against prometheus instance list to explicitly allow
+# If the list is empty everything is whitelisted
+instance_whitelist = [
+    "toto",
+    "tata"
+]
+
+# strings to check against prometheus instance list to explicitly deny
+# If the list is empty nothing is blacklisted
+instance_blacklist = [
+    "https"
+]
+
+# default endpoint, if omitted the first item in endpoints will be used
+# endpoint = "http://prometheus.example.com/api/v1"
+
+# here is where you define your prometheus/thanos endpoints
+endpoints = [
+    "http://thanos.example.com/api/v1",
+    "http://prometheus.example.com/api/v1"
+]
+

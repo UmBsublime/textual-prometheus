@@ -1,0 +1,30 @@
+Screen {
+    layers: main history;
+    overflow: hidden;
+}
+
+$primary: purple ;
+$secondary: teal;
+
+.main_layer {
+    layer: main;
+}
+
+Footer {
+    layer: main;
+}
+
+#prom-plot {
+    border: round $primary;
+    color: $secondary;
+    height: 1fr;
+    width: 1fr;
+    text-align: center;
+    background: $boost;
+}
+
+Placeholder {
+    width: 1fr;
+    height: 1fr;
+    border: tall $boost;
+}
