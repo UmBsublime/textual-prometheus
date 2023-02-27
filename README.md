@@ -13,7 +13,7 @@ Simple tool to query prometheus/thanos API and plot it in the terminal
 
 ## Limitations
 
-- Timeframe is currently hardcoded to last 24h
+- Timeframe is currently hardcoded to last `30d` with a bucket size of `1h`
 - Will currently auto-update once every 60s only
 
 ## Installation
@@ -21,8 +21,8 @@ Simple tool to query prometheus/thanos API and plot it in the terminal
 Since this package is still in development and not ready for release,
 the simplest way to install it is with pipx
 
-```console
-$ pipx install git+https://github.com/UmBsublime/textual-prometheus.git
+```bash
+pipx install git+https://github.com/UmBsublime/textual-prometheus.git
 ```
 
 ## Configuration
