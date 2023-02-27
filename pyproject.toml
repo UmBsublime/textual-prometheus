@@ -12,6 +12,7 @@ textual = "^0.12.1"
 requests = "^2.28.2"
 plotext = "^5.2.8"
 pydantic = "^1.10.5"
+tomli = { version = "^2.0.1", python = "<3.11" }
 # Only while we wait for upstream to update deps for textual to 0.12.*
 textual-autocomplete = {git = "https://github.com/UmBsublime/textual-autocomplete.git"}
 

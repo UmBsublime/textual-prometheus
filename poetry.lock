@@ -705,6 +705,18 @@ reference = "HEAD"
 resolved_reference = "cb96bd3ae2d943c21ef46416f1a82ddf97f3f5b2"
 
 [[package]]
+name = "tomli"
+version = "2.0.1"
+description = "A lil' TOML parser"
+category = "main"
+optional = false
+python-versions = ">=3.7"
+files = [
+    {file = "tomli-2.0.1-py3-none-any.whl", hash = "sha256:939de3e7a6161af0c887ef91b7d41a53e7c5a1ca976325f429cb46ea9bc30ecc"},
+    {file = "tomli-2.0.1.tar.gz", hash = "sha256:de526c12914f0c550d15924c62d72abc48d6fe7364aa87328337a31007fe8a4f"},
+]
+
+[[package]]
 name = "typing-extensions"
 version = "4.5.0"
 description = "Backported and Experimental Type Hints for Python 3.7+"
@@ -808,4 +820,4 @@ testing = ["big-O", "flake8 (<5)", "jaraco.functools", "jaraco.itertools", "more
 [metadata]
 lock-version = "2.0"
 python-versions = "^3.10"
-content-hash = "c93c33548abdc9cc3908eb53581e8798d63b41a448a8f8ef162cdc22b2c74547"
+content-hash = "8e4e3d352e77cafbf90dc6c08b409a6ea48bb057c699f2b2f312b66dbfcc13ed"

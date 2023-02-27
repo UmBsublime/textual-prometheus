@@ -1,6 +1,12 @@
-import tomllib
+import sys
 from pathlib import Path
 from typing import Any
+
+if sys.version_info < (3, 11):
+    # compatibility for python <3.11
+    import tomli as tomllib
+else:
+    import tomllib
 
 from pydantic import BaseSettings, HttpUrl
 
