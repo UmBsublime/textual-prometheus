@@ -1,3 +1,4 @@
+import os.path
 import sys
 from pathlib import Path
 from typing import Any
@@ -11,6 +12,10 @@ else:
 from pydantic import BaseSettings, HttpUrl
 
 
+class ConfigNotFound(Exception):
+    ...
+
+
 def toml_config_settings_source(settings: BaseSettings) -> dict[str, Any]:
     """
     Settings source that loads variables from a TOML file
@@ -18,8 +23,14 @@ def toml_config_settings_source(settings: BaseSettings) -> dict[str, Any]:
 
     Using `env_file_encoding` from Config when reading `config.toml`
     """
-    encoding = settings.__config__.env_file_encoding
-    return tomllib.loads(Path('config.toml').read_text(encoding))
+
+    conf_paths = ("./config.toml", "~/.config/tprom/config.toml", "/etc/tprom/config.toml")
+    for conf_path in conf_paths:
+        conf_file = Path(os.path.expanduser(conf_path))
+        if conf_file.is_file():
+            encoding = settings.__config__.env_file_encoding
+            return tomllib.loads(conf_file.read_text(encoding))
+    raise ConfigNotFound(f"Couldn't find config file in {conf_paths}")
 
 
 class Settings(BaseSettings):
