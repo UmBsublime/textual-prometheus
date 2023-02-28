@@ -1,5 +1,6 @@
 # strings to check against prometheus instance list to explicitly allow
 # If the list is empty everything is whitelisted
+# If both blacklist and whitelist are provided, blacklist has precedence
 instance_whitelist = [
     "toto",
     "tata"
@@ -7,9 +8,13 @@ instance_whitelist = [
 
 # strings to check against prometheus instance list to explicitly deny
 # If the list is empty nothing is blacklisted
+# If both blacklist and whitelist are provided, blacklist has precedence
 instance_blacklist = [
     "https"
 ]
+
+# Wether or not to check SSL certificate validity (Default True)
+# verify_cert = "False"
 
 # default endpoint, if omitted the first item in endpoints will be used
 # endpoint = "http://prometheus.example.com/api/v1"

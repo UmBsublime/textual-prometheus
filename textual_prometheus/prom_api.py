@@ -27,7 +27,7 @@ class PrometheusApi:
             "end": end,
             "step": step
         }
-        r = requests.get(path.join(self.url, "query_range"), params=query_params, headers=self.headers)
+        r = requests.get(path.join(self.url, "query_range"), params=query_params, headers=self.headers, verify=SETTINGS.verify_cert)
         if r.ok:
             return r.json()
 
@@ -53,7 +53,7 @@ class PrometheusApi:
         start = end - timedelta(hours=1)
         h = {'accept': 'application/json'}
         p = {'start': datetime.timestamp(start), 'end': datetime.timestamp(end)}
-        result = requests.get(path.join(self.url, f'label/{label}/values'), headers=h, params=p)
+        result = requests.get(path.join(self.url, f'label/{label}/values'), headers=h, params=p, verify=SETTINGS.verify_cert)
         if result.ok:
             return sorted(result.json().get('data', []))
         else:

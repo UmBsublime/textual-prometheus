@@ -27,6 +27,7 @@ class Settings(BaseSettings):
     instance_whitelist: list[str]
     instance_blacklist: list[str]
     endpoint: HttpUrl | None
+    verify_cert: bool = True
 
     class Config:
         env_file_encoding = 'utf-8'
