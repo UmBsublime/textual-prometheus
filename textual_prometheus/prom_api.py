@@ -5,9 +5,9 @@ import requests
 
 from textual_prometheus.config import SETTINGS
 
+
 # TODO: So much to do here, currently only very
 #       minimal queries are supported
-
 class PrometheusApi:
     def __init__(self, url: str = ""):
         self.url = url
@@ -27,14 +27,25 @@ class PrometheusApi:
             "end": end,
             "step": step
         }
-        r = requests.get(path.join(self.url, "query_range"), params=query_params, headers=self.headers, verify=SETTINGS.verify_cert)
+        r = requests.get(
+            path.join(self.url, "query_range"),
+            params=query_params,
+            headers=self.headers,
+            verify=SETTINGS.verify_cert
+        )
         if r.ok:
             return r.json()
 
         print(r.text)
 
-    def parse_query_range(self, instance: str, metric: str, start: datetime = '', end: datetime = '', step: str = '1h') \
-            -> list[list]:
+    def parse_query_range(
+        self,
+        instance: str,
+        metric: str,
+        start: datetime = '',
+        end: datetime = '',
+        step: str = '1h'
+    ) -> list[list]:
         query_params = {
             "query": f"{{__name__=~'{metric}', instance=~'{instance}'}}",
             "start": start,
@@ -53,7 +64,12 @@ class PrometheusApi:
         start = end - timedelta(hours=1)
         h = {'accept': 'application/json'}
         p = {'start': datetime.timestamp(start), 'end': datetime.timestamp(end)}
-        result = requests.get(path.join(self.url, f'label/{label}/values'), headers=h, params=p, verify=SETTINGS.verify_cert)
+        result = requests.get(
+            path.join(self.url, f'label/{label}/values'),
+            headers=h,
+            params=p,
+            verify=SETTINGS.verify_cert
+        )
         if result.ok:
             return sorted(result.json().get('data', []))
         else:
