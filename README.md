@@ -30,19 +30,23 @@ pipx install git+https://github.com/UmBsublime/textual-prometheus.git
 You can find an example configuration [here](./config.toml.example). 
 Simply rename the file to config.toml and edit the values.
 
+The tool will look for a config file in the following order,
+first found, first used:
+
+- ./config.toml
+- ~/.config/tprom/config.toml
+- /etc/tprom/config.toml
+
 ## Usage
 
 ![example](./demo.gif)
 
 Once installed with pipx you will have the `tprom` cli added to `~/.local/bin/`.
 
-Currently, the tool needs the configuration file to be in your local directory
-
 ## TODO
 
 Non-exhaustive list of features I might implement one day.
 
-- Add default path for configuration
 - Date picker for the query
 - Ensure fields are generated in a thread (non-blocking)
 - Ability to write the graph to a file
