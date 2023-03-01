@@ -1,3 +1,5 @@
 __pycache__/
-config.toml
 .idea/
+.venv/
+config.toml
+.python-version
