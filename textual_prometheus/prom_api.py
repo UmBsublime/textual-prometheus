@@ -80,15 +80,14 @@ class PrometheusApi:
         values = self.get_label_values('instance')
         output = []
         for v in values:
-            if ' ' not in v:
-                if SETTINGS.instance_blacklist:
-                    if value_in_list(v, SETTINGS.instance_blacklist):
-                        continue
-                if SETTINGS.instance_whitelist:
-                    if value_in_list(v, SETTINGS.instance_whitelist):
-                        output.append(v)
-                else:
+            if SETTINGS.instance_blacklist:
+                if value_in_list(v, SETTINGS.instance_blacklist):
+                    continue
+            if SETTINGS.instance_whitelist:
+                if value_in_list(v, SETTINGS.instance_whitelist):
                     output.append(v)
+            else:
+                output.append(v)
         return sorted(output)
 
 
